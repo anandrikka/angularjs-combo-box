@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="src/angular-combo-box.js"></script>
+    <script>
+        angular.module('comboBoxDemo', ['angularComboBox']);
+        angular.module('comboBoxDemo').controller('ComboBoxDemoCtrl', ['$scope', function($scope){
+            $scope.list = [
+                {'name':'name1', age:'1'},
+                {'name':'name2', age:'2'},
+                {'name':'name3', age:'3'}
+            ]
+        }]);
+    </script>
+</head>
+<body ng-app="comboBoxDemo">
+<div ng-controller="ComboBoxDemoCtrl" id="comboParent">
+    <combo-box options="list" ng-model="selectedOpt" config="{'optionLabel':'name'}" parent-id="comboParent"></combo-box>
+
+    {{selectedOpt | json}}
+
+</div>
+</body>
+</html>

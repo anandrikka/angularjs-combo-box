@@ -1,0 +1,19 @@
+{
+  "author": {
+    "name":"Anand Reddy Rikka",
+    "email":"anandreddyb4u@gmail.com",
+    "url":"http://www.github.com/anandrikka"
+  },
+  "name": "angularjs-combo-box",
+  "version": "0.0.0",
+  "description": "Combo-box with input and dropdown options",
+  "homepage": "https://github.com/anandrikka/angular-combo-box",
+  "bugs": "https://github.com/anandrikka/angular-combo-box/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anandrikka/angular-combo-box.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
