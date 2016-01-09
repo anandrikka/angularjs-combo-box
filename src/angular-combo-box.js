@@ -4,7 +4,7 @@
     angular.module("angularComboBox.tpl", [])
         .run(["$templateCache", function($templateCache){
             $templateCache.put("templates/angular-combo-box.tpl.html",
-                "<div id=\"open-dropdown\"uib-dropdown uib-keyboard-nav is-open=\"isToggled\">"+
+                "<div id=\"open-dropdown\" uib-dropdown uib-keyboard-nav is-open=\"isToggled\">"+
                 "   <div class=\"input-group\">"+
                 "       <input class=\"form-control\" autocomplete=\"off\" type=\"text\" ng-model=\"bindVal\" dropdown-display id=\"inputForCombo\">"+
                 "       <span class=\"input-group-btn\" id=\"buttonForCombo\">"+
@@ -45,6 +45,11 @@
                 scope.onSelect = function(selOption){
                     scope.bindVal=selOption;
                     scope.isToggled = false;
+                    if(scope.isToggled){
+                        angular.element('#open-dropdown').addClass("open");
+                    }else{
+                        angular.element('#open-dropdown').removeClass("open");
+                    }
                 };
 
                 scope.$watch(function(){
