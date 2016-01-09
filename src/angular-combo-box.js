@@ -4,11 +4,11 @@
     angular.module("angularComboBox.tpl", [])
         .run(["$templateCache", function($templateCache){
             $templateCache.put("templates/angular-combo-box.tpl.html",
-                "<div uib-dropdown uib-keyboard-nav is-open=\"isToggled\">"+
+                "<div id=\"open-dropdown\"uib-dropdown uib-keyboard-nav is-open=\"isToggled\">"+
                 "   <div class=\"input-group\">"+
                 "       <input class=\"form-control\" autocomplete=\"off\" type=\"text\" ng-model=\"bindVal\" dropdown-display id=\"inputForCombo\">"+
                 "       <span class=\"input-group-btn\" id=\"buttonForCombo\">"+
-                "           <button class=\"btn btn-default\"  style=\"background-color: white\" id=\"combo-button\">"+
+                "           <button class=\"btn btn-default\" style=\"background-color: white\" id=\"combo-button\">"+
                 "               <span class=\"caret\"></span>"+
                 "           </button>"+
                 "       </span>"+
@@ -36,6 +36,7 @@
             },
             link:function(scope, ele, attrs){
                 scope.isToggled = false;
+
                 var inputElement = angular.element('#inputForCombo');
                 var buttonForCombo = angular.element('#buttonForCombo');
 
@@ -61,9 +62,9 @@
                         var inputHeight = (inputElement.offset().top - parentElement.offset().top) + inputElement.height();
                         var bottomHeight = parentElement.height() - inputHeight;
                         if(bottomHeight < 134){
-                            angular.element('#comboDropDown').addClass('acw-combobox-dropDown');
+                            angular.element('#comboDropDown').addClass('combobox-dropup');
                         }else{
-                            angular.element('#comboDropDown').removeClass('acw-combobox-dropDown');
+                            angular.element('#comboDropDown').removeClass('combobox-dropup');
                         }
                     });
                 }
@@ -77,15 +78,39 @@
                 });
 
                 buttonForCombo.on('click', function(){
-                 scope.isToggled = !scope.isToggled;
-                 });
+                    scope.isToggled = !scope.isToggled;
+                    if(scope.isToggled){
+                        angular.element('#open-dropdown').addClass("open");
+                    }else{
+                        angular.element('#open-dropdown').removeClass("open");
+                    }
+
+                });
 
                 inputElement.on('click', function(){
                     scope.isToggled = !scope.isToggled;
+                    if(scope.isToggled){
+                        angular.element('#open-dropdown').addClass("open");
+                    }else{
+                        angular.element('#open-dropdown').removeClass("open");
+                    }
                 });
 
                 inputElement.on('keyup', function(){
                     scope.isToggled = true;
+                    if(scope.isToggled){
+                        angular.element('#open-dropdown').addClass("open");
+                    }else{
+                        angular.element('#open-dropdown').removeClass("open");
+                    }
+                });
+
+                scope.$watch('isToggled', function(){
+                    if(scope.isToggled){
+                        angular.element('#comboDropDown').addClass("open");
+                    }else{
+                        angular.element('#comboDropDown').removeClass("open");
+                    }
                 });
 
             }

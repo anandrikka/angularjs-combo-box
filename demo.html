@@ -3,11 +3,11 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="src/angular-combo-box.js"></script>
     <script>
         angular.module('comboBoxDemo', ['angularComboBox']);
@@ -15,17 +15,18 @@
             $scope.list = [
                 {'name':'name1', age:'1'},
                 {'name':'name2', age:'2'},
-                {'name':'name3', age:'3'}
+                {'name':'name3', age:'3'},
+                {'name':'name4', age:'4'},
+                {'name':'name5', age:'5'},
+                {'name':'name6', age:'6'},
+                {'name':'name7', age:'7'}
             ]
         }]);
     </script>
 </head>
 <body ng-app="comboBoxDemo">
-<div ng-controller="ComboBoxDemoCtrl" id="comboParent">
-    <combo-box options="list" ng-model="selectedOpt" config="{'optionLabel':'name'}" parent-id="comboParent"></combo-box>
-
-    {{selectedOpt | json}}
-
+<div ng-controller="ComboBoxDemoCtrl" id="comboParent" style="width: 300px">
+    <combo-box options="list" ng-model="selectedOpt" config="{'optionLabel':'name'}"></combo-box>
 </div>
 </body>
 </html>
